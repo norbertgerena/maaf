@@ -20,7 +20,7 @@ def parse_opt():
     add_arg('--weights_path', type=str, default=None)
     add_arg('--debug', action="store_true")
     add_arg('--non-strict_loading', action="store_false", dest="strict_loading")
-    add_arg('--data_path', default="/home/default/ephemeral_drive/Data/cfq/")
+    add_arg('--data_path', default="/home/phd/ngerena/phd2025/Dissertation/cfq-dataset")
     add_arg('--output_path', type=str, default=None)
 
     add_arg(

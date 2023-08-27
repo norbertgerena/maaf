@@ -108,10 +108,15 @@ def compute_db_features(cfg, model, testset, category=None):
 
     for batch in tqdm(loader):
         images = [dd["target_image"] for dd in batch]
+        #print(images[0].shape)
         if len(images) > 0:
             if hasattr(model, "image_transform"):
                 images = [model.image_transform(im) for im in images]
+                #print('has image transform')
+            #print(images[0].shape)
             images = torch.stack(images).float().to(model.device)
+            #print('stacked')
+            #print(images.shape)
         texts = [dd["target_text"] for dd in batch]
 
         emb = model(images, texts).data.cpu().numpy()

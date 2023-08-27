@@ -333,7 +333,7 @@ class ImageFeatureExtractor(torch.nn.Module):
             for conv, bn in [(self.model.conv1, self.model.bn1),
                              (self.model.conv2, self.model.bn2),
                              (self.model.conv3, self.model.bn3)]:
-                x = self.model.relu(bn(conv(x)))
+                x = self.model.relu1(bn(conv(x)))
             x = self.model.avgpool(x)
             return x
 

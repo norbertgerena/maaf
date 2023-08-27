@@ -28,6 +28,9 @@ def setup(args, modify_exp_name=False):
         curr_time = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
         cfg.EXP_NAME = cfg.EXP_NAME + f"-{curr_time}"
     cfg.freeze()
+#     print("===================================")
+#     print(cfg)
+#     print("===================================")
     return cfg
 
 

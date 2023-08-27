@@ -1,15 +1,15 @@
 DATASET:
   NAME: imat_fashion
-  PATH: /home/default/ephemeral_drive/Data/imat2018/
+  PATH: /home/phd/ngerena/phd2025/Dissertation/fashion-iq/
   AUGMENTATION:
     IMAGE_AUGMENTATION: null
 DATA_LOADER:
   LOADER_NUM_WORKERS: 0
-OUTPUT_DIR: /home/default/ephemeral_drive/experiments/
+OUTPUT_DIR: /home/phd/ngerena/phd2025/Dissertation/experiments/
 EXP_NAME: defaultexpname
 MODEL:
   EMBED_DIM: 1024
-  COMPOSITION: clipresmaaf
+  COMPOSITION: clip
   DEVICE: cuda
   LOSS: batch_based_classification  # consider
   TEXT_MODEL:
@@ -21,27 +21,16 @@ MODEL:
     - 4
     - attnpool
   INCLUDES_IMAGE_TRANSFORM: false
-  MAAF:
-    ATTENTION_HEADS: 8
-    ATTN_SOFTMAX_REPLACEMENT: null
-    BLOCK_WIDTH: 256
-    NUM_BLOCKS: 1
-    OUTPUT: rwpool
-    POSITION_ENCODING: null
-    RESIDUAL:
-      INITIAL_MAAF_PRESIGMOID: null
-      INITIAL_MAAF_WEIGHT: 0.0067
-      LEARN_WEIGHTS: false
 SOLVER:
   OPTIMIZER: adam
-  BATCH_SIZE: 64 #128
+  BATCH_SIZE: 64
+  #MAX_SPLIT_SIZE_MB: 90
   DROP_WORST_RATE: 0
   EVAL_EVERY: 1
-  LEARNING_RATE: 1.0e-05
+  LEARNING_RATE: 1.0e-06
   LEARNING_RATE_DECAY: 0.1
   LEARNING_RATE_DECAY_FREQUENCY: 7254  # consider 980 (yes, an accident if so)
   NUM_ITERS: 21762
   BATCH_NORM_MODE: freeze_bn
-  PRETRAINED_WEIGHT_LR_FACTOR_TEXT: 0.1
-  PRETRAINED_WEIGHT_LR_FACTOR_IMAGE: 0.1
-  PROJECTION_LR_TIED_TO_PRETRAINED: false
+  PRETRAINED_WEIGHT_LR_FACTOR_TEXT: 1.0
+  PRETRAINED_WEIGHT_LR_FACTOR_IMAGE: 1.0

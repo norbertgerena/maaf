@@ -82,8 +82,8 @@ class FashionIQDataset(Dataset):
 
         self.split = split
         self.transform = transform
-        self.img_path = path + '/'
-
+        #self.img_path = path + '/'
+        
         failures = []
 
         data = {
@@ -104,7 +104,7 @@ class FashionIQDataset(Dataset):
                         json.load(open(path + '/' + data_type + '/' + datafile))
 
         split_labels = sorted(list(data["image_splits"].keys()))
-
+       
         global_imgs = []
         img_by_cat = {cat: [] for cat in CATEGORIES}
         self.asin2id = {}
@@ -113,7 +113,11 @@ class FashionIQDataset(Dataset):
                 # if asin in failures:
                 #     continue
                 category = splabel.split(".")[1]
-                file_path = path + '/img/' + category + '/' + asin
+                file_path = path + '/img/' + category + '/' + asin + ' .jpg'
+#                 print("===========================================")
+#                 print(file_path)
+#                 print("===========================================")
+#                 break
                 if os.path.exists(file_path) or split == "test":
                     global_id = len(global_imgs)
                     category_id = len(img_by_cat[category])

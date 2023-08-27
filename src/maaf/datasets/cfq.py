@@ -19,9 +19,14 @@ class CFQSet:
         self.image_path = image_path
         self.thresholds = [-1, -0.67, -0.34, -0.01, 0.33, 0.66, 0.99]
 
-        judgment_path = os.path.join(path, "judgments.tsv")
+        judgment_path = os.path.join(path, "judgments2.tsv")
         df = pd.read_csv(judgment_path, delimiter="\t")
-
+        
+#         #remove missing pics
+#         df = df[(df.query_hash != '4366cda5') & (df.query_hash != 'c347de7b') 
+#                 & (df.catalog_hash != '4366cda5') & (df.catalog_hash != 'c347de7b')
+#                & (df.query_hash != 'c09e9b35') & (df.catalog_hash != 'c09e9b35')]
+        
         df["accurate"] = df["accurate"].apply(str.lower)
         df["similar"] = df["similar"].apply(str.lower)
 
