@@ -1,6 +1,6 @@
 # Copyright 2022 Yahoo, Licensed under the terms of the Apache License, Version 2.0.
 # See LICENSE file in project root for terms.
-
+source ../config.file #to set output and datset dirs outside the maaf package
 
 expdir=$1
 
@@ -41,6 +41,6 @@ echo "here ${expdir}"
 # fi
 # expdir='/home/phd/ngerena/phd2025/Dissertation/experiments/clip-fiq_2023-08-27-123329'
 if [[ ! -e $expdir/cfq_results.json ]] || [ $REDO_EVALS ]; then
-  python src/maaf/actions/eval_cfq.py --config $expdir/config.yaml
+  python src/maaf/actions/eval_cfq.py --config $expdir/config.yaml --data_path $CFQ_PATH
   echo "here eval_cfq ===== ${expdir}"
 fi
