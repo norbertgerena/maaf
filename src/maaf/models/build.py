@@ -86,9 +86,8 @@ def build_model(cfg, texts=None, strict_loading=True):
         sys.exit()
 
     head, task = get_task_head(cfg)
-
     model = ModelClass(head, **kwargs)
-
+    
     device = torch.device(cfg.MODEL.DEVICE)
     model.to(device)
 
@@ -97,7 +96,7 @@ def build_model(cfg, texts=None, strict_loading=True):
         loaded_dict = torch.load(cfg.MODEL.WEIGHTS, map_location=model.device)
         model.load_state_dict(loaded_dict["model_state_dict"],
                               strict=strict_loading)
-
+    
     return model, task
 
 

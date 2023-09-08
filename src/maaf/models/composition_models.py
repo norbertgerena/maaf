@@ -158,6 +158,7 @@ class Addition(ImgTextCompositionBase):
     """Vector addition model."""
 
     def compose(self, img_emb, text_emb):
+        print('======Addition======')
         if img_emb is None:
             assert text_emb is not None, "No images or text available"
             return text_emb

@@ -163,7 +163,7 @@ class CFQ:
         if self.transform is not None:
             img = self.transform(img)
         return torch.stack([img]).float()
-
+   
     def get_embeddings(self, model, queries, catalog):
         if hasattr(model, "preprocess"):
             preprocess = model.preprocess

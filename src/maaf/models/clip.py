@@ -108,7 +108,6 @@ class ClipModel(ImgTextCompositionBase):
         Don't add embedding specified by self.omit_in_composition, but use it
         if it's the only embedding.
         """
-
         assert img_emb is not None or text_emb is not None, \
             "No images or text available"
         if img_emb is None:
@@ -119,7 +118,6 @@ class ClipModel(ImgTextCompositionBase):
             return text_emb
         elif self.omit_in_composition == "text":
             return img_emb
-
         return img_emb + text_emb
 
     def extract_img_feature(self, images):
